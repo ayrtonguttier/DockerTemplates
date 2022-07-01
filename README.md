@@ -2,4 +2,4 @@
 Docker Templates
 
 
-## Just a collection of docker templates that I usually use
+## Just a collection of docker images templates that I usually use
