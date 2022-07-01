@@ -5,9 +5,8 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
-
 RUN git clone https://github.com/ayrtonguttier/DotNetCacheExample.git
-RUN ls
+# Caminho deve ser {gitrepo}/{solution}/{project}/{project}.csproj
 RUN dotnet restore "./DotNetCacheExample/CacheExample/CacheExample/CacheExample.csproj"
 COPY . .
 WORKDIR "/src/DotNetCacheExample/CacheExample/CacheExample"
