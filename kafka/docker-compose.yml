@@ -5,7 +5,7 @@ services:
     ports:
       - 9092:9092
     volumes:
-      - kafka:/bitname/kafka
+      - kafka:/bitnami/kafka
     environment:
       - KAFKA_CFG_NODE_ID=0
       - KAFKA_CFG_PROCESS_ROLES=controller,broker
