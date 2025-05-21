@@ -7,6 +7,6 @@ RUN git checkout stable
 RUN make CMAKE_BUILD_TYPE=Release
 
 FROM scratch
-COPY --from=build /neovim/build/bin /neovim/build/bin
+COPY --from=build /neovim /
 #COPY --from=build /neovim/build/lib /lib
 #COPY --from=build /neovim/build/share /share

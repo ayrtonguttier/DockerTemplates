@@ -8,4 +8,4 @@ WORKDIR /alacritty
 RUN cargo build --release
 
 FROM scratch 
-COPY --from=build /alacritty/target/release/alacritty /
+COPY --from=build /alacritty/ /
