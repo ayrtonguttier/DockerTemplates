@@ -11,30 +11,18 @@ services:
       - KAFKA_CFG_PROCESS_ROLES=controller,broker
       - KAFKA_CFG_LISTENERS=PLAINTEXT://:9092,CONTROLLER://:9093
       - KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP=CONTROLLER:PLAINTEXT,PLAINTEXT:PLAINTEXT
-      - KAFKA_CFG_CONTROLLER_QUORUM_VOTERS=0@kafka:9093
+      - KAFKA_CFG_CONTROLLER_QUORUM_VOTERS=0@broker:9093
       - KAFKA_CFG_CONTROLLER_LISTENER_NAMES=CONTROLLER
   ui:
     image: provectuslabs/kafka-ui
     ports: 
       - 8080:8080
     depends_on: 
-      - kafka
+      - broker
     environment:
       DYNAMIC_CONFIG_ENABLED: 'true'
       KAFKA_CLUSTERS_0_NAME: 'broker'
       KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS: 'broker:9092'
-  producer:
-    build: producer
-    environment:
-      - KAFKA=kafka:9092
-    depends_on:
-      - kafka
-  consumer:
-    build: consumer
-    environment:
-      - KAFKA=kafka:9092
-    depends_on:
-      - kafka
 
 volumes:
   kafka:
